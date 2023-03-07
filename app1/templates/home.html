@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Employee-Records</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <h1>Employee Form</h1>
+    <hr>
+    <form action="{% url 'home' %}" method="post" class="container-fluid">
+        {% csrf_token %}
+        <br>
+        id :- <input type="number" name="eid" value="{{emp.id}}" readonly><br><br>
+        Name :- <input type="text" name="ename" value="{{emp.name}}" placeholder="Enter name"><br><br>
+        Age :- <input type="number" name="eage" value="{{emp.age}}" placeholder="Enter age"><br><br>
+        Salary :- <input type="number" name="esalary" value="{{emp.salary}}" placeholder="Enter salary"><br><br>
+        Address :- <input type="text" name="eaddress" value="{{emp.address}}" placeholder="Enter address"><br><br>
+
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="switch1" name="eactive">
+            <label class="custom-control-label" for="switch1">Is_Active</label>
+        </div>
+
+
+        <br>
+        <!-- {% if emp.is_active %}
+            Is_Active :- <input type="text" name="eactive" value="Yes" placeholder="Enter Yes/No"><br><br>
+        {% else %}
+            Is_Active :- <input type="text" name="eactive" value="No" placeholder="Enter Yes/No"><br><br>
+        {% endif %} -->
+
+        <!-- <input type="button" value="Submit"> -->
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <br>
+
+    <a href="{% url 'show_emp' %}">All Employee Records</a> &nbsp <a href="{% url 'active_emp' %}">Active Employee Records</a>
+
+</body>
+</html>
+

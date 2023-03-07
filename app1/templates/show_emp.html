@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+</head>
+<body>
+    <h1>All Employee Records</h1>
+    <hr>
+    <br>
+    <table border="2px" width="50%" border-collapse: collapse;>
+        <thead>
+            <tr>
+                <td>Name</td>
+                <td>Age</td>
+                <td>Salary</td>
+                <td>Address</td>
+                <td>is_active</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in emps %}
+            <tr>
+                <td>{{emp.name}}</td>
+                <td>{{emp.age}}</td>
+                <td>{{emp.salary}}</td>
+                <td>{{emp.address}}</td>
+                {% if emp.is_active %}
+                    <td>Yes</td>
+                {% else %}
+                    <td>No</td>
+                {% endif %}
+                <td>
+                    <a href="{% url 'edit_emp' emp.id %}">Edit</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    
+
+    <a href="{% url 'home' %}">Back to home</a>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+<!-- {% for emp in emps %}
+
+Employee name :- {{emp.name}} <br>
+
+{% endfor %} -->
